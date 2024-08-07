@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Novo Cliente - Gestão de Freelancer{% endblock %}
+
+{% block content %}
+<h1>Novo Cliente</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<a href="{% url 'lista_clientes' %}" class="btn btn-secondary mt-3">Voltar</a>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Lista de Projetos{% endblock %}
+
+{% block content %}
+<h1>Lista de Projetos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Cliente</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for projeto in projetos %}
+        <tr>
+            <td>{{ projeto.nome }}</td>
+            <td>{{ projeto.descricao }}</td>
+            <td>{{ projeto.cliente.nome }}</td>
+            <td>
+                <a href="{% url 'editar_projeto' projeto.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'excluir_projeto' projeto.id %}" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'novo_projeto' %}" class="btn btn-success">Novo Projeto</a>
+{% endblock %}
